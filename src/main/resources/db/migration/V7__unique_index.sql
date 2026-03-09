@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS ux_teams_name_group ON teams (name, group_name);

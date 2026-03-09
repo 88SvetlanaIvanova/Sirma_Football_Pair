@@ -1,0 +1,753 @@
+{
+	"info": {
+		"_postman_id": "d93aa3f1-3919-45f3-8872-fab1e7c043b5",
+		"name": "Sirma-Exam-2026",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27784121"
+	},
+	"item": [
+		{
+			"name": "CREATE",
+			"item": [
+				{
+					"name": "POST Appearances",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/BRAND_NEW_DAY/records - records.csv"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/import/appearances"
+					},
+					"response": []
+				},
+				{
+					"name": "POST import Players",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/BRAND_NEW_DAY/players - players.csv"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/import/players"
+					},
+					"response": []
+				},
+				{
+					"name": "POST import Teams",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/Downloads/TEAMS.csv"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/import/teams"
+					},
+					"response": []
+				},
+				{
+					"name": "POST import matches",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/BRAND_NEW_DAY/matches - matches.csv"
+								}
+							]
+						},
+						"url": "http://localhost:8080/api/import/matches"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a team",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"7\",\r\n  \"name\": \"Belarus\",\r\n  \"managerFullName\": \"Julian Nagelsmann\",\r\n  \"groupName\": \"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/teams"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teamId\": 1,\r\n  \"teamNumber\": 1,\r\n  \"position\": \"GK\",\r\n  \"fullName\": \"Manuel Neuer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/players"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a match",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"teamAId\": 1,\r\n  \"teamBId\": 2,\r\n  \"date\": \"2024-06-14\",\r\n  \"score\": \"5-1\",\r\n  \"baseDuration\": 90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/matches"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "READ",
+			"item": [
+				{
+					"name": "Get all teams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/teams"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all matches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/matches"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all players",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/players"
+					},
+					"response": []
+				},
+				{
+					"name": "Get players by team",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/players?teamId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players"
+							],
+							"query": [
+								{
+									"key": "teamId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a team by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/teams/f5a31dcb-bfd9-4b0f-9ebd-0db48469d600"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a player by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/players/cfbbfda4-ff3c-4c80-9c40-1796578f151f"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a player by team name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/players/by-team?name=Spain",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"players",
+								"by-team"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Spain"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a match by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/matches/c0bae8b3-dee8-4dc0-b1eb-b009cd401abc"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UPDATE",
+			"item": [
+				{
+					"name": "Update a match",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"c0bae8b3-dee8-4dc0-b1eb-b009cd401abc\",\r\n    \"teamAId\": \"ec7e78aa-cbd8-49a9-9f45-7b8f8a5a3732\",\r\n    \"teamBId\": \"86b87934-718d-40aa-83bb-e7dc905ecb3c\",\r\n    \"date\": \"2024-06-19\",\r\n    \"score\": \"0-1\",\r\n    \"baseDuration\": 90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/matches/c0bae8b3-dee8-4dc0-b1eb-b009cd401abc"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a player",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"cfbbfda4-ff3c-4c80-9c40-1796578f151f\",\r\n    \"teamId\": \"c79a294d-431b-4460-b7bf-4c3d979cd1c3\",\r\n    \"teamNumber\": 7,\r\n    \"position\": \"GT\",\r\n    \"fullName\": \"Kai Havertz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/players/cfbbfda4-ff3c-4c80-9c40-1796578f151f"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a team",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": \"f5a31dcb-bfd9-4b0f-9ebd-0db48469d600\",\r\n        \"name\": \"Switzerland\",\r\n        \"managerFullName\": \"Murat Yakin\",\r\n        \"groupName\": \"B\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/teams/f5a31dcb-bfd9-4b0f-9ebd-0db48469d600"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "Delete a match",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"c0bae8b3-dee8-4dc0-b1eb-b009cd401abc\",\r\n    \"teamAId\": \"ec7e78aa-cbd8-49a9-9f45-7b8f8a5a3732\",\r\n    \"teamBId\": \"86b87934-718d-40aa-83bb-e7dc905ecb3c\",\r\n    \"date\": \"2024-06-19\",\r\n    \"score\": \"0-1\",\r\n    \"baseDuration\": 90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/matches/c0bae8b3-dee8-4dc0-b1eb-b009cd401abc"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a team",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"id\": \"f5a31dcb-bfd9-4b0f-9ebd-0db48469d600\",\r\n        \"name\": \"Switzerland\",\r\n        \"managerFullName\": \"Murat Yakin\",\r\n        \"groupName\": \"B\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/teams/f5a31dcb-bfd9-4b0f-9ebd-0db48469d600"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a player",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"cfbbfda4-ff3c-4c80-9c40-1796578f151f\",\r\n    \"teamId\": \"c79a294d-431b-4460-b7bf-4c3d979cd1c3\",\r\n    \"teamNumber\": 7,\r\n    \"position\": \"GT\",\r\n    \"fullName\": \"Kai Havertz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/players/27963b31-162a-4a96-81fc-6bd0b6aa179c"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET Pairs Algorithm",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/analysis/top/lines"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					"\r",
+					"{\r",
+					"  \"info\": {\r",
+					"    \"name\": \"Santa Workshop - Gift API\",\r",
+					"    \"_postman_id\": \"0f6c7e3a-8e0b-4f6c-9be3-abc123456789\",\r",
+					"    \"description\": \"End-to-end tests for Gift endpoints\",\r",
+					"    \"schema\": \"https://schema.getpostman.com/json/collection/v2.1.0/collection.json\"\r",
+					"  },\r",
+					"  \"item\": [\r",
+					"    {\r",
+					"      \"name\": \"01 - Create Gift (POST /api/gifts)\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"POST\",\r",
+					"        \"header\": [\r",
+					"          { \"key\": \"Content-Type\", \"value\": \"application/json\" },\r",
+					"          { \"key\": \"Accept\", \"value\": \"application/json\" }\r",
+					"        ],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\"] },\r",
+					"        \"body\": {\r",
+					"          \"mode\": \"raw\",\r",
+					"          \"raw\": \"{\\n  \\\"name\\\": \\\"Lego City Fire Truck\\\",\\n  \\\"category\\\": \\\"TOY\\\",\\n  \\\"targetAge\\\": 7\\n}\"\r",
+					"        }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 201 Created', () => pm.response.code === 201);\",\r",
+					"              \"\",\r",
+					"              \"const json = pm.response.json();\",\r",
+					"              \"pm.test('Response matches GiftResponse schema', () => {\",\r",
+					"              \"  pm.expect(json).to.have.property('id');\",\r",
+					"              \"  pm.expect(json).to.have.property('name');\",\r",
+					"              \"  pm.expect(json).to.have.property('category');\",\r",
+					"              \"  pm.expect(json).to.have.property('isWrapped', false);\",\r",
+					"              \"  pm.expect(json).to.have.property('status', 'PENDING');\",\r",
+					"              \"  pm.expect(json).to.have.property('createdAt');\",\r",
+					"              \"});\",\r",
+					"              \"\",\r",
+					"              \"pm.environment.set('giftId', json.id);\",\r",
+					"              \"pm.environment.set('createdGiftName', json.name);\",\r",
+					"              \"pm.test('createdAt is ISO date-time', () => {\",\r",
+					"              \"  const d = new Date(json.createdAt);\",\r",
+					"              \"  pm.expect(!isNaN(d.valueOf())).to.be.true;\",\r",
+					"              \"});\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"02 - List Gifts (GET /api/gifts)\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"GET\",\r",
+					"        \"header\": [\r",
+					"          { \"key\": \"Accept\", \"value\": \"application/json\" }\r",
+					"        ],\r",
+					"        \"url\": {\r",
+					"          \"raw\": \"{{baseUrl}}/api/gifts?page=0&size=10&sort=createdAt\",\r",
+					"          \"host\": [\"{{baseUrl}}\"],\r",
+					"          \"path\": [\"api\",\"gifts\"],\r",
+					"          \"query\": [\r",
+					"            { \"key\": \"page\", \"value\": \"0\" },\r",
+					"            { \"key\": \"size\", \"value\": \"10\" },\r",
+					"            { \"key\": \"sort\", \"value\": \"createdAt\" }\r",
+					"          ]\r",
+					"        }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 200', () => pm.response.code === 200);\",\r",
+					"              \"const page = pm.response.json();\",\r",
+					"              \"pm.test('Page content exists', () => pm.expect(page.content).to.be.an('array'));\",\r",
+					"              \"pm.test('Newest first (createdAt DESC default)', () => {\",\r",
+					"              \"  if (page.content.length > 1) {\",\r",
+					"              \"    const first = new Date(page.content[0].createdAt).valueOf();\",\r",
+					"              \"    const second = new Date(page.content[1].createdAt).valueOf();\",\r",
+					"              \"    pm.expect(first >= second).to.be.true;\",\r",
+					"              \"  }\",\r",
+					"              \"});\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"03 - Filter by status/category/wrapped\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"GET\",\r",
+					"        \"header\": [{ \"key\": \"Accept\", \"value\": \"application/json\" }],\r",
+					"        \"url\": {\r",
+					"          \"raw\": \"{{baseUrl}}/api/gifts?status=PENDING&category=TOY&wrapped=false&page=0&size=5&sort=name\",\r",
+					"          \"host\": [\"{{baseUrl}}\"],\r",
+					"          \"path\": [\"api\",\"gifts\"],\r",
+					"          \"query\": [\r",
+					"            { \"key\": \"status\", \"value\": \"PENDING\" },\r",
+					"            { \"key\": \"category\", \"value\": \"TOY\" },\r",
+					"            { \"key\": \"wrapped\", \"value\": \"false\" },\r",
+					"            { \"key\": \"page\", \"value\": \"0\" },\r",
+					"            { \"key\": \"size\", \"value\": \"5\" },\r",
+					"            { \"key\": \"sort\", \"value\": \"name\" }\r",
+					"          ]\r",
+					"        }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 200', () => pm.response.code === 200);\",\r",
+					"              \"const page = pm.response.json();\",\r",
+					"              \"pm.test('All results match filters', () => {\",\r",
+					"              \"  page.content.forEach(g => {\",\r",
+					"              \"    pm.expect(g.status).to.eql('PENDING');\",\r",
+					"              \"    pm.expect(g.category).to.eql('TOY');\",\r",
+					"              \"    pm.expect(g.isWrapped).to.eql(false);\",\r",
+					"              \"  });\",\r",
+					"              \"});\",\r",
+					"              \"pm.test('Sorted ascending by name when sort=name', () => {\",\r",
+					"              \"  const names = page.content.map(g => g.name);\",\r",
+					"              \"  const sorted = [...names].sort((a,b) => a.localeCompare(b));\",\r",
+					"              \"  pm.expect(names.join('|')).to.eql(sorted.join('|'));\",\r",
+					"              \"});\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"04 - Get Gift by ID (GET /api/gifts/{{giftId}})\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"GET\",\r",
+					"        \"header\": [{ \"key\": \"Accept\", \"value\": \"application/json\" }],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts/{{giftId}}\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\",\"{{giftId}}\"] }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 200', () => pm.response.code === 200);\",\r",
+					"              \"const g = pm.response.json();\",\r",
+					"              \"pm.test('ID matches saved giftId', () => pm.expect(g.id).to.eql(Number(pm.environment.get('giftId'))));\",\r",
+					"              \"pm.test('Name matches created name', () => pm.expect(g.name).to.eql(pm.environment.get('createdGiftName')));\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"05 - Wrap Gift (PATCH /api/gifts/{{giftId}}/wrap)\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"PATCH\",\r",
+					"        \"header\": [\r",
+					"          { \"key\": \"Accept\", \"value\": \"application/json\" }\r",
+					"        ],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts/{{giftId}}/wrap\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\",\"{{giftId}}\",\"wrap\"] }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 200', () => pm.response.code === 200);\",\r",
+					"              \"const g = pm.response.json();\",\r",
+					"              \"pm.test('isWrapped is true after wrap', () => pm.expect(g.isWrapped).to.eql(true));\",\r",
+					"              \"// Idempotency check: calling wrap again should keep true (server returns updated gift with true)\",\r",
+					"              \"pm.environment.set('wrappedCheckId', g.id);\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"05b - Wrap Gift again (idempotency)\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"PATCH\",\r",
+					"        \"header\": [{ \"key\": \"Accept\", \"value\": \"application/json\" }],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts/{{wrappedCheckId}}/wrap\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\",\"{{wrappedCheckId}}\",\"wrap\"] }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 200', () => pm.response.code === 200);\",\r",
+					"              \"const g = pm.response.json();\",\r",
+					"              \"pm.test('isWrapped remains true', () => pm.expect(g.isWrapped).to.eql(true));\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"06 - Update Gift (PUT /api/gifts/{{giftId}})\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"PUT\",\r",
+					"        \"header\": [\r",
+					"          { \"key\": \"Content-Type\", \"value\": \"application/json\" },\r",
+					"          { \"key\": \"Accept\", \"value\": \"application/json\" }\r",
+					"        ],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts/{{giftId}}\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\",\"{{giftId}}\"] },\r",
+					"        \"body\": {\r",
+					"          \"mode\": \"raw\",\r",
+					"          \"raw\": \"{\\n  \\\"name\\\": \\\"Kindle Paperwhite\\\",\\n  \\\"category\\\": \\\"GADGET\\\",\\n  \\\"targetAge\\\": 12,\\n  \\\"isWrapped\\\": true,\\n  \\\"status\\\": \\\"READY\\\"\\n}\"\r",
+					"        }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 200', () => pm.response.code === 200);\",\r",
+					"              \"const g = pm.response.json();\",\r",
+					"              \"pm.test('Fields updated correctly', () => {\",\r",
+					"              \"  pm.expect(g.name).to.eql('Kindle Paperwhite');\",\r",
+					"              \"  pm.expect(g.category).to.eql('GADGET');\",\r",
+					"              \"  pm.expect(g.targetAge).to.eql(12);\",\r",
+					"              \"  pm.expect(g.isWrapped).to.eql(true);\",\r",
+					"              \"  pm.expect(g.status).to.eql('READY');\",\r",
+					"              \"});\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"07 - Delete Gift (DELETE /api/gifts/{{giftId}})\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"DELETE\",\r",
+					"        \"header\": [{ \"key\": \"Accept\", \"value\": \"application/json\" }],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts/{{giftId}}\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\",\"{{giftId}}\"] }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 204 No Content', () => pm.response.code === 204);\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"08 - Get Deleted Gift (should be 404)\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"GET\",\r",
+					"        \"header\": [{ \"key\": \"Accept\", \"value\": \"application/json\" }],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts/{{giftId}}\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\",\"{{giftId}}\"] }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 404 after deletion', () => pm.response.code === 404);\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"09 - Negative: Create invalid (name too short)\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"POST\",\r",
+					"        \"header\": [\r",
+					"          { \"key\": \"Content-Type\", \"value\": \"application/json\" },\r",
+					"          { \"key\": \"Accept\", \"value\": \"application/json\" }\r",
+					"        ],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\"] },\r",
+					"        \"body\": { \"mode\": \"raw\", \"raw\": \"{\\n  \\\"name\\\": \\\"A\\\",\\n  \\\"category\\\": \\\"BOOK\\\",\\n  \\\"targetAge\\\": 10\\n}\" }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Invalid create returns 400', () => pm.response.code === 400);\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    },\r",
+					"    {\r",
+					"      \"name\": \"10 - Negative: Update missing gift → 404\",\r",
+					"      \"request\": {\r",
+					"        \"method\": \"PUT\",\r",
+					"        \"header\": [\r",
+					"          { \"key\": \"Content-Type\", \"value\": \"application/json\" },\r",
+					"          { \"key\": \"Accept\", \"value\": \"application/json\" }\r",
+					"        ],\r",
+					"        \"url\": { \"raw\": \"{{baseUrl}}/api/gifts/999999\", \"host\": [\"{{baseUrl}}\"], \"path\": [\"api\",\"gifts\",\"999999\"] },\r",
+					"        \"body\": { \"mode\": \"raw\", \"raw\": \"{\\n  \\\"name\\\": \\\"Nonexistent\\\",\\n  \\\"category\\\": \\\"OTHER\\\",\\n  \\\"targetAge\\\": 0,\\n  \\\"isWrapped\\\": false,\\n  \\\"status\\\": \\\"PENDING\\\"\\n}\" }\r",
+					"      },\r",
+					"      \"event\": [\r",
+					"        {\r",
+					"          \"listen\": \"test\",\r",
+					"          \"script\": {\r",
+					"            \"exec\": [\r",
+					"              \"pm.test('Status is 404 for missing resource', () => pm.response.code === 404);\"\r",
+					"            ],\r",
+					"            \"type\": \"text/javascript\"\r",
+					"          }\r",
+					"        }\r",
+					"      ]\r",
+					"    }\r",
+					"  ]\r",
+					"}\r",
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "GiftResponseSchema ",
+			"value": ""
+		},
+		{
+			"key": "baseUrl",
+			"value": ""
+		}
+	]
+}
